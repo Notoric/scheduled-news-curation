@@ -1,4 +1,5 @@
 import time
+import os
 import json
 import pymongo
 import requests
@@ -15,6 +16,34 @@ print(" |_____/|_| \_|\_____|")
 
 # Load config
 print("Loading config...")
+
+if os.path.exists('config.json') == False:
+    print("Config file not found, Creating...")
+    config = {
+        "mongo" : {
+            "host" : "localhost",
+            "port" : 27017,
+            "db" : "notoric-snc"
+        },
+        "groq" : {
+            "api_key" : ""
+        },
+        "weather" : {
+            "api_key" : "",
+            "city" : "london,uk"
+        },
+        "news" : {
+            "api_key" : "",
+            "country" : "gb",
+            "article_lifetime": 6,
+            "article_interval": 1
+        }
+    }
+
+    with open('config.json', 'w') as f:
+        json.dump(config, f)
+    print("Config file created! Please fill in the details in config.json before running the script again.")
+    exit()
 
 with open('config.json') as f:
     config = json.load(f)
