@@ -149,7 +149,10 @@ def get_newsfeed(category='general'):
         article_data['author'] = article['author']
         article_data['category'] = category
         article_data['timestamp'] = datetime.now()
-        articles.append(article_data)
+        if (article['url'].contains("reuters.com") == False):
+            articles.append(article_data)
+        
+        
 
     print("Newsfeed data retrieved!")
     return articles
