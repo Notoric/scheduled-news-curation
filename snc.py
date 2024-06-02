@@ -90,7 +90,7 @@ def get_weather():
     temp = round(temp * 2 + 0.5) / 2
     response['temperature'] = str(temp) + "°C"
     response['humidity'] = str(data['main']['humidity']) + "%"
-    response['status'] = data['weather'][0]['description']
+    response['status'] = data['weather'][0]['description'].capitalize()
     windspeed = data['wind']['speed']
 
     if windspeed < 2:
@@ -112,6 +112,8 @@ def get_weather():
     
     if data['visibility'] < 6000:
         response['fog'] = "true"
+
+    response['icon'] = f"https://openweathermap.org/img/wn/{data['weather'][0]['icon']}@2x.png"
 
     print("Weather data retrieved!")
     return response
@@ -252,7 +254,6 @@ def get_all_news():
     print("Getting all news articles...")
 
     write_newsfeed(get_interesting_news(get_newsfeed("technology")))
-    write_newsfeed(get_interesting_news(get_newsfeed("entertainment")))
     write_newsfeed(get_interesting_news(get_newsfeed("science")))
     
 # Delete all old news articles

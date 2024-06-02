@@ -1,0 +1,20 @@
+{
+    "mongo" : {
+        "host" : "$MONGO_HOST",
+        "port" : "$MONGO_PORT",
+        "db" : "$MONGO_DB"
+    },
+    "groq" : {
+        "api_key" : "$GROQ_API_KEY"
+    },
+    "weather" : {
+        "api_key" : "$OPENWEATHERMAP_API_KEY",
+        "city" : "coalville,uk"
+    },
+    "news" : {
+        "api_key" : "$NEWSAPI_API_KEY",
+        "country" : "$NEWSAPI_COUNTRY",
+        "article_lifetime": "$NEWSAPI_ARTICLE_LIFETIME",
+        "article_interval": "$NEWSAPI_ARTICLE_INTERVAL"
+    }
+}
