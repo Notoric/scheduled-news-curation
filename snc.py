@@ -5,7 +5,6 @@ import pymongo
 import requests
 import schedule
 import re
-import requests
 from bs4 import BeautifulSoup
 from groq import Groq
 from datetime import datetime, timedelta
@@ -122,6 +121,34 @@ def get_weather():
         response['fog'] = "true"
 
     response['icon'] = f"https://openweathermap.org/img/wn/{data['weather'][0]['icon']}@2x.png"
+
+    summary = ""
+    try:
+        client = Groq(api_key=groq_key)
+        completion = client.chat.completions.create(
+            model="gemma-7b-it",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You will be given data to represent the weather. Please respond with a weather report from the data as a radio announcer would read it out, Make sure the article is using spoken language and is easy to read and understand for everyone. Do NOT state the location OR the name of a radio station"
+                },
+                {
+                    "role": "user",
+                    "content": str(response)
+                }
+            ],
+            temperature=1.4,
+            max_tokens=1024,
+            top_p=1,
+            stream=False,
+            stop=None,
+        )
+
+        summary = str(completion.choices[0].message.content)
+    except Exception as e:
+        print(e)
+
+    response['summary'] = summary
 
     print("Weather data retrieved!")
     return response
