@@ -14,6 +14,7 @@ services:
       - NEWSAPI_COUNTRY=gb
       - ARTICLE_LIFETIME=6 # in hours
       - ARTICLE_INTERVAL=1 # in hours
+      - PIXABAY_API_KEY=
   mongodb:
     container_name: notoric-snc-mongo
     image: mongo

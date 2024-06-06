@@ -15,7 +15,8 @@ config = config_template.replace('$MONGO_HOST', os.environ['MONGO_HOST']) \
     .replace('$NEWSAPI_API_KEY', os.environ['NEWSAPI_API_KEY']) \
     .replace('$NEWSAPI_COUNTRY', os.environ['NEWSAPI_COUNTRY']) \
     .replace('$NEWSAPI_ARTICLE_LIFETIME', os.environ['ARTICLE_LIFETIME']) \
-    .replace('$NEWSAPI_ARTICLE_INTERVAL', os.environ['ARTICLE_INTERVAL'])
+    .replace('$NEWSAPI_ARTICLE_INTERVAL', os.environ['ARTICLE_INTERVAL']) \
+    .replace('$PIXABAY_API_KEY', os.environ['PIXABAY_API_KEY']) \
 
 # Write the config to a file
 with open('config.json', 'w') as config_file:

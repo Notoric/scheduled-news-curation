@@ -16,5 +16,8 @@
         "country" : "$NEWSAPI_COUNTRY",
         "article_lifetime": "$NEWSAPI_ARTICLE_LIFETIME",
         "article_interval": "$NEWSAPI_ARTICLE_INTERVAL"
+    },
+    "pixabay" : {
+        "api_key" : "$PIXABAY_API_KEY"
     }
 }
